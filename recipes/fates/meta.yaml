@@ -6,65 +6,58 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/NordicESMhub/ctsm/archive/release-emerald-platform{{ version }}.tar.gz
-  sha256: 42c59bd6d296fff4319136e5566677566c897bf295f3605af73296fb8aeb97c2
+    url: https://github.com/NordicESMhub/ctsm/archive/release-emerald-platform{{ version }}.tar.gz
+    sha256: 17bfa0e08e2049537f38c83f394154b96d91015831188b80c77c78ad9bfd67bd
 
 build:
-    skip: True  # [win or osx or py<30]
-    number: 1
+    skip: True  # [win or osx]
+    number: 0
 
 requirements:
-  build:
-    - {{ compiler('c') }}
-    - cmake
-  host:
-    - python
-    - mpich
-    - hdf5
-    - netcdf-fortran
-    - netcdf-fortran * mpi_{{ mpi }}_*
-    - svn
-    - {{ mpi }}
-  run:
-    - python
-    - {{ compiler('c') }}
-    - {{ compiler('fortran') }}
-    - netcdf-fortran
-    - netcdf-fortran * mpi_{{ mpi }}_*
-    - wget
-    - tcsh
-    - cmake
-    - make
-    - mkl
-    - vim
-    - svn
-    - libxml2
-    - libiconv
+    build:
+        - {{ compiler('c') }}
+        - cmake
+    host:
+        - python >=3
+        - mpich
+        - hdf5
+        - netcdf-fortran
+        - svn
+    run:
+        - tcsh
+        - python >=3
+        - {{ compiler('c') }}
+        - {{ compiler('fortran') }}
+        - netcdf-fortran
+        - mpich
+        - libxml2
+        - perl-xml-libxml
+        - libiconv
+        - make
+        - cmake
+        - mkl
+        - wget
 
 test:
-  commands:
-    - create_newcase --help
-    - create_clone --help
-    - query_testlists --help
-    - query_config --help
+    commands:
+        - create_newcase --help
+        - create_clone --help
+        - query_testlists --help
+        - query_config --help
 
 about:
-  home: https://github.com/NGEET/fates
-  license: BSD 3-Clause
-  license_family: BSD
-  license_file: LICENSE.txt
-  summary: 'Functionally Assembled Terrestrial Ecosystem Simulator (FATES) with CTSM'
-
-  description: |
-    This repository holds the Functionally Assembled Terrestrial Ecosystem Simulator 
-    (FATES). FATES is a numerical terrestrial ecosystem model. Its development and 
-    support is primarily supported by the Department of Energy's Office of Science, 
-    through the Next Generation Ecosystem Experiment - Tropics (NGEE-T) project.
-  doc_url: https://fates-docs.readthedocs.io/en/latest/index.html
-  dev_url: https://github.com/NGEET/fates
+    home: https://github.com/NordicESMhub/ctsm/tree/fates_emerald_api
+    license: BSD 3-Clause
+    license_family: BSD
+    license_file: LICENSE
+    summary: The EMERALD version of the Functionally Assembled Terrestrial Ecosystem Simulator (FATES) with Community Terrestrial Systems Model as host model is maintained by the University of Oslo. 
+    doc_url: https://github.com/NordicESMhub/ctsm/blob/fates_emerald_api/README_fates_emerald_api
 
 extra:
   recipe-maintainers:
     - annefou
   skip-lints:
     - compilers_must_be_in_build
+  notes: |
+     This is a customized version of the Functionally Assembled Terrestrial Ecosystem Simulator (FATES). In this version FATES can be run on a number of pre-defined sites (in the Nordic regions) where in-situ observations are collected. If a user would like to make research on new sites, please contact the maintainer.
+
