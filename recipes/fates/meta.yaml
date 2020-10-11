@@ -20,7 +20,6 @@ requirements:
   host:
     - python
     - mpich
-    - hdf5 * mpi_{{ mpi }}_*
     - hdf5
     - netcdf-fortran
     - netcdf-fortran * mpi_{{ mpi }}_*
