@@ -1,5 +1,5 @@
 {% set name = "fates-emerald" %}
-{% set version = "1.1.1" %}
+{% set version = "2.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
     url: https://github.com/NordicESMhub/ctsm/archive/release-emerald-platform{{ version }}.tar.gz
-    sha256: 17bfa0e08e2049537f38c83f394154b96d91015831188b80c77c78ad9bfd67bd
+    sha256: 380c7c46377a31aa6c32b9b2e3313a9ff03d3f86caa164dc369a3561e3cd9686
 
 build:
     skip: True  # [win or osx]
