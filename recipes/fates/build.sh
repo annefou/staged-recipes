@@ -10,6 +10,7 @@ cp -r cime ${PREFIX}/
 cp -r cime_config ${PREFIX}/
 cp -r components ${PREFIX}/
 cp -r src ${PREFIX}/
+cp -r bld ${PREFIX}/
 
 cd ${PREFIX}/bin/
 ln -s ../cime/scripts/create_* .
