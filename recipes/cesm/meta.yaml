@@ -20,8 +20,9 @@ requirements:
     host:
         - python
         - mpich
-        - hdf5
-        - netcdf-fortran
+        - hdf5=*=*mpich*
+        - netcdf-fortran=*=*mpich*
+        - subversion
     run:
         - tcsh
         - python
