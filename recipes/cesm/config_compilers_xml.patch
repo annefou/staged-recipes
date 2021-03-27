@@ -1,0 +1,30 @@
+--- ./work/cime/config/cesm/machines/config_compilers.xml.ori	2021-03-27 15:39:20.666121566 +0000
++++ ./work/cime/config/cesm/machines/config_compilers.xml	2021-03-27 15:40:19.814603194 +0000
+@@ -1347,6 +1347,27 @@
+   </SLIBS>
+ </compiler>
+ 
++<compiler COMPILER="gnu" MACH="espresso">
++  <LD>mpifort</LD>
++  <AR>x86_64-conda_cos6-linux-gnu-ar</AR>
++  <SFC>x86_64-conda_cos6-linux-gnu-gfortran</SFC>
++  <SCC>x86_64-conda_cos6-linux-gnu-cc</SCC>
++  <SCXX>x86_64-conda_cos6-linux-gnu-c++</SCXX>
++  <MPIFC>mpifort</MPIFC>
++  <MPICC>mpicc</MPICC>
++  <MPICXX>mpicxx</MPICXX>
++  <NETCDF_PATH>$ENV{NETCDF_DIR}</NETCDF_PATH>
++  <FFLAGS>
++    <append DEBUG="FALSE"> -O2 </append>
++    <append MODEL="micom"> -fdefault-real-8 </append>
++    <append MODEL="cam"> -finit-local-zero </append>
++  </FFLAGS>
++  <SLIBS>
++    <append> -L$(NETCDF_PATH)/lib -lnetcdff -lnetcdf -ldl </append>
++    <append> -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -fopenmp </append>
++  </SLIBS>
++</compiler>
++ 
+ <compiler MACH="userdefined">
+   <CONFIG_ARGS>
+     <base/>

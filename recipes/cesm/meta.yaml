@@ -6,53 +6,71 @@ package:
   version: {{ version }}
 
 source:
-    url: https://github.com/ESCOMP/CESM/archive/refs/tags/release-cesm{{ version }}.tar.gz
-    sha256: ac04907e6ce42fef01d2f58da089756258afd515ffada0f993f60f0eff45980a
+  url: https://github.com/ESCOMP/CESM/archive/refs/tags/release-{{ name }}{{ version }}.tar.gz
+  sha256: ac04907e6ce42fef01d2f58da089756258afd515ffada0f993f60f0eff45980a
 
 build:
-    skip: True  # [win or osx]
-    number: 0
+  skip: True  # [win or osx]
+  number: 0
 
 requirements:
-    build:
-        - {{ compiler('c') }}
-        - cmake
-    host:
-        - python
-        - mpich
-        - hdf5=*=*mpich*
-        - netcdf-fortran=*=*mpich*
-        - subversion
-    run:
-        - tcsh
-        - python
-        - binutils
-        - {{ compiler('c') }}
-        - {{ compiler('fortran') }}
-        - netcdf-fortran=*=*mpich*
-        - mpich
-        - libxml2
-        - libiconv
-        - make
-        - cmake
-        - mkl
-        - subversion
-        - wget
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('fortran') }}
+    - cmake
+    
+  host:
+    - python
+    - mpich
+    - hdf5=*=*mpich*
+    - netcdf-fortran=*=*mpich*
+    - subversion
+    - libxml2
+    - perl
+    - perl-xml-parser
+
+  run:
+    - python
+    - tcsh
+    - binutils
+    - {{ compiler('c') }}
+    - {{ compiler('fortran') }}
+    - netcdf-fortran=*=*mpich*
+    - mpich
+    - libxml2
+    - libiconv
+    - make
+    - cmake
+    - mkl
+    - subversion
+    - wget
+    - perl
+    - perl-xml-parser
 
 test:
-    commands:
-        - create_newcase --help
-        - create_clone --help
-        - query_testlists --help
-        - query_config --help
+  commands:
+    - create_newcase --help
+    - create_clone --help
+    - query_testlists --help
+    - bash ${RECIPE_DIR}/test-cesm.sh 
 
 about:
-    home: https://github.com/ESCOMP/CESM
-    license: BSD-3-Clause
-    license_family: BSD
-    license_file: LICENSE
-    summary: CESM (Community Earth System Model) is a fully-coupled, community, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states. 
-    doc_url: https://www.cesm.ucar.edu/models/
+  home: https://github.com/ESCOMP/CESM
+  # Remember to specify the license variants for BSD, Apache, GPL, and LGPL.
+  # Use the SPDX identifier, e.g: GPL-2.0-only instead of GNU General Public License version 2.0
+  # See https://spdx.org/licenses/
+  license: BSD-3-Clause
+  # The license_family, i.e. "BSD" if license is "BSD-3-Clause". (optional)
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: 'CESM (Community Earth System Model) is a fully-coupled, community, global climate model'
+  # The remaining entries in this section are optional, but recommended.
+  description: |
+    CESM (Community Earth System Model) is a fully-coupled, community,
+    global climate model that provides state-of-the-art computer simulations
+    of the Earth's past, present, and future climate states. 
+  doc_url: https://www.cesm.ucar.edu/models/
+  dev_url: https://github.com/ESCOMP/CESM
 
 extra:
   recipe-maintainers:
