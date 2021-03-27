@@ -69,9 +69,12 @@ about:
     CESM (Community Earth System Model) is a fully-coupled, community,
     global climate model that provides state-of-the-art computer simulations
     of the Earth's past, present, and future climate states. 
+    When creating a case, use `espresso` for the target machine.
   doc_url: https://www.cesm.ucar.edu/models/
   dev_url: https://github.com/ESCOMP/CESM
 
 extra:
   recipe-maintainers:
     - annefou
+    - jeani
+    - bgruening 

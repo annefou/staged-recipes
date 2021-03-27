@@ -15,4 +15,4 @@ cd /tmp/cases/F2000climo
 
 cd -
 
-rm -rf /tmp/cases/FF2000climo
+rm -rf /tmp/cases/F2000climo
