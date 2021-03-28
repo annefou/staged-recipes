@@ -66,10 +66,21 @@ about:
   summary: 'CESM (Community Earth System Model) is a fully-coupled, community, global climate model'
   # The remaining entries in this section are optional, but recommended.
   description: |
-    CESM (Community Earth System Model) is a fully-coupled, community,
+    "CESM (Community Earth System Model) is a fully-coupled, community,
     global climate model that provides state-of-the-art computer simulations
     of the Earth's past, present, and future climate states. 
     When creating a case, use `espresso` for the target machine.
+    In addition, the following environment variables need to be defined
+    before creating the cesm case:
+    ```
+    export NETCDF_DIR=$(nc-config --prefix)
+    export CIME_MODEL=cesm
+    export CESM_DATA_ROOT=$HOME
+    export CESM_WORK_ROOT=$HOME
+    mkdir -p $CESM_DATA_ROOT/inputdata
+    ```
+    "
+
   doc_url: https://www.cesm.ucar.edu/models/
   dev_url: https://github.com/ESCOMP/CESM
 
