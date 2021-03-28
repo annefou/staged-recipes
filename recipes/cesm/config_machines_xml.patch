@@ -1,14 +1,14 @@
---- ./cime/config/cesm/machines/config_machines.xml.ori	2021-03-27 13:35:51.271286000 +0000
-+++ ./cime/config/cesm/machines/config_machines.xml	2021-03-27 13:43:23.370060000 +0000
-@@ -2750,6 +2750,45 @@
-       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
-     </environment_variables>
+--- ./cime/config/cesm/machines/config_machines.xml.ori 2021-03-28 19:58:10.287649000 +0000
++++ ./cime/config/cesm/machines/config_machines.xml     2021-03-28 19:59:49.852519000 +0000
+@@ -2494,6 +2494,46 @@
+     </module_system>
    </machine>
+
 +  <machine MACH="espresso">
 +    <DESC>
-+          VM 
++          VM
 +          x4 CPUs
-+          Gold Centos 7 
++          Gold Centos 7
 +    </DESC>
 +    <NODENAME_REGEX>UNSET</NODENAME_REGEX>
 +    <OS>LINUX</OS>
@@ -43,6 +43,7 @@
 +      <resource name="RLIMIT_STACK">-1</resource>
 +    </resource_limits>
 +  </machine>
- 
++
    <default_run_suffix>
      <default_run_exe>${EXEROOT}/cesm.exe </default_run_exe>
+     <default_run_misc_suffix> >> cesm.log.$LID 2>&amp;1 </default_run_misc_suffix>
